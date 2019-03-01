@@ -14,6 +14,38 @@ var port = process.env.PORT || config.dev.port
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+// create mock-up data api
+var mockData = require('../data.json')
+var seller = mockData.seller;
+var goods = mockData.goods;
+var ratings = mockData.seller;
+
+var apiRoutes = express.Router();
+
+apiRoutes.get('/seller', (req, res) => {
+  res.json({
+    errno: 0,
+    data: seller
+  })
+})
+
+apiRoutes.get('/goods', (req, res) => {
+  res.json({
+    errno: 0,
+    data: goods
+  })
+})
+
+apiRoutes.get('/ratings', (req, res) => {
+  res.json({
+    errno: 0,
+    data: ratings
+  })
+})
+
+app.use('/api', apiRoutes);
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
