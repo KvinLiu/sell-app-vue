@@ -28,7 +28,7 @@ export default {
     this.$http.get('/api/seller').then((response) => {
       response = response.body
       if (response.errno === 0) {
-        this.seller = response.body
+        this.seller = response.data
       }
     })
   },
