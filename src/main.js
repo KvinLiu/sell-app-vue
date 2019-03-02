@@ -7,7 +7,7 @@ import goods from './components/goods/goods'
 import ratings from './components/ratings/ratings'
 import seller from './components/seller/seller'
 
-import './common/css/base.css'
+import './common/stylus/base.styl'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
