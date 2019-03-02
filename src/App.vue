@@ -38,34 +38,40 @@ export default {
 }
 </script>
 
-<style scoped>
-.tab {
-  display: flex;
-  position: relative;
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
+<style scoped lang="stylus">
+@import './common/stylus/mixin.styl'
+.tab 
+  display: flex
+  position: relative
+  width: 100%
+  height: 40px
+  line-height: 40px
   /* border-bottom: 1px solid rgba(7, 17, 27, 0.1); */
-}
-.tab::after {
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  border-top: 1px solid rgba(7, 17, 27, 0.1);
-  content: ' ';
-}
-.tab-item {
-  flex: 1;
-  text-align: center;
-}
-.tab-item a {
-  display: block;
-  font-size: 14px;
-  color: rgb(77, 85, 93);
-}
-a.active {
-  color: rgb(240, 20, 20);
-}
+  border-1px(rgba(7,17,27,0.1))
+// .tab::after {
+//   display: block;
+//   position: absolute;
+//   left: 0;
+//   bottom: 0;
+//   width: 100%;
+//   border-top: 1px solid rgba(7, 17, 27, 0.1);
+//   content: ' ';
+// }
+.tab-item 
+  flex: 1
+  text-align: center
+  a 
+    display: block
+    font-size: 14px
+    color: rgb(77, 85, 93)
+    &.active
+      color: rgb(240, 20, 20)
+// .tab-item a 
+//   display: block;
+//   font-size: 14px;
+//   color: rgb(77, 85, 93);
+
+// a.active {
+//   color: rgb(240, 20, 20);
+// }
 </style>

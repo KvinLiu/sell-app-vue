@@ -13,9 +13,8 @@
   "dependencies": {
     "babel-runtime": "^6.0.0",
     "vue": "^1.0.21",
-    "vue-router": "^0.7.13",
-    "vue-resource": "^1.0.1"
-
+    "vue-resource": "^1.0.1",
+    "vue-router": "^0.7.13"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
@@ -27,8 +26,6 @@
     "babel-register": "^6.0.0",
     "connect-history-api-fallback": "^1.1.0",
     "css-loader": "^0.23.0",
-    "style-loader": "^0.13.1",
-    "stylus-loader": "^2.1.1",
     "eslint": "^2.10.2",
     "eslint-config-standard": "^5.1.0",
     "eslint-friendly-formatter": "^2.0.5",
@@ -46,6 +43,9 @@
     "json-loader": "^0.5.4",
     "ora": "^0.2.0",
     "shelljs": "^0.6.0",
+    "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.1.1",
     "url-loader": "^0.5.7",
     "vue-hot-reload-api": "^1.2.0",
     "vue-html-loader": "^1.0.0",
