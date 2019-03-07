@@ -37,6 +37,7 @@
       </li>
     </ul>
   </div>
+  <shopcart></shopcart>
 </div>
 
 
@@ -44,6 +45,7 @@
 
 <script>
   import BScroll from 'better-scroll'
+  import shopcart from 'components/shopcart/shopcart'
 
   const ERR_OK = 0
   export default {
@@ -123,8 +125,10 @@
         }
         // console.log(this.listHeight)
       } 
+    },
+    components: {
+      shopcart
     }
-
   }
 </script>
 
