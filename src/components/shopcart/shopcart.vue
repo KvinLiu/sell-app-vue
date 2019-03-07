@@ -155,6 +155,7 @@ export default {
       .content-right
         flex: 0 0 105px
         width: 105px
+        cursor: pointer
         .pay
           height: 48px
           line-height: 48px
