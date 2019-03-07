@@ -112,6 +112,7 @@
           click: true
         })
         this.foodScroll = new BScroll(this.$els.foodsWrapper, {
+          click: true,
           probeType: 3
         })
         this.foodScroll.on('scroll', (pos) => {
