@@ -40,7 +40,7 @@
       </li>
     </ul>
   </div>
-  <shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+  <shopcart v-ref:shopcart :select-Foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
 </div>
 
 
@@ -75,6 +75,17 @@
           }
         }
         return 0
+      },
+      selectFoods() {
+        let foods = []
+        this.goods.forEach((good) => {
+          good.foods.forEach((food) => {
+            if (food.count) {
+              foods.push(food)
+            }
+          })
+        })
+        return foods
       }
     },
     created() {
@@ -129,11 +140,22 @@
           this.listHeight.push(height)
         }
         // console.log(this.listHeight)
-      } 
+      },
+      _drop(target) {
+        // 体验优化, 异步执行下落动画
+        this.$nextTick(() => {
+          this.$refs.shopcart.drop(target)
+        })
+      }
     },
     components: {
       shopcart,
       cartcontrol
+    },
+    events: {
+      'cart.add' (target) {
+        this._drop(target)
+      }
     }
   }
 </script>
@@ -193,6 +215,7 @@
       
   .foods-wrapper
     flex: 1
+    position: relative
     .title
       padding-left: 14px
       height: 26px

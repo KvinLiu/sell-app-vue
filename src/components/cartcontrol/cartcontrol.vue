@@ -26,6 +26,7 @@ export default {
       } else {
         this.food.count ++
       }
+      this.$dispatch('cart.add', event.target)
     },
     decCart(event) {
       if (!event._constructed) {
@@ -48,16 +49,16 @@ export default {
       display: inline-block
       padding: 6px
       transition: all 0.4s linear
+      .icon
+        display: inline-block
+        line-height: 24px
+        font-size: 24px
+        color: rgb(0, 160, 220)
+        transition: all 0.4s linear
+        transform: rotate(0)
       &.move-transition
         opacity: 1
-        transform: translate3D(0,0,0)
-        .icon
-          display: inline-block
-          line-height: 24px
-          font-size: 24px
-          color: rgb(0, 160, 220)
-          transition: all 0.4s linear
-          transform: rotate(0)
+        transform: translate3d(0,0,0)
       &.move-enter, &.move-leave
         opacity: 0
         transform: translate3d(24px, 0, 0)
