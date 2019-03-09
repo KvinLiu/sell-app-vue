@@ -1,7 +1,7 @@
 <template>
   <div class="shopcart">
-    <div class="content" @click="toggleList">
-      <div class="content-left">
+    <div class="content">
+      <div class="content-left" @click="toggleList">
         <div class="logo-wrapper">
           <div class="logo" :class="{'highlight': totalCount>0}">
             <i class="icon-shopping_cart" :class="{'highlight': totalCount>0}"></i>
@@ -26,7 +26,7 @@
           <h1 class="title">购物车</h1>
           <span class="empty">清空</span>
         </div>
-        <div class="list-content">
+        <div class="list-content" v-el:list-content>
           <ul>
             <li class="food" v-for="food in selectFoods">
               <span class="name">{{food.name}}</span>
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 import cartcontrol from 'components/cartcontrol/cartcontrol'
 
 export default {
@@ -128,6 +129,17 @@ export default {
         return false
       }
       let show = !this.fold
+      if (show) {
+        this.$nextTick(() => {
+          if (!this.scroll) {
+            this.scroll = new BScroll(this.$els.listContent, {
+              click: true
+            })
+          } else {
+            this.scroll.refresh()
+          }
+        })
+      }
       return show
     }
   },
