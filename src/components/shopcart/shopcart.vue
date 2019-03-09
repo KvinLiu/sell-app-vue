@@ -1,7 +1,8 @@
 <template>
+<div>
   <div class="shopcart">
-    <div class="content">
-      <div class="content-left" @click="toggleList">
+    <div class="content" @click="toggleList">
+      <div class="content-left">
         <div class="logo-wrapper">
           <div class="logo" :class="{'highlight': totalCount>0}">
             <i class="icon-shopping_cart" :class="{'highlight': totalCount>0}"></i>
@@ -11,7 +12,7 @@
         <div class="price" :class="{'highlight': totalPrice>0}">¥ {{totalPrice}}</div>
         <div class="desc">配送费另需 ¥ {{deliveryPrice}}元</div>
       </div>
-      <div class="content-right">
+      <div class="content-right" @click.stop="pay">
         <div class="pay" :class="payClass">
           {{payDesc}}
         </div>
@@ -41,7 +42,10 @@
         </div>
       </div>
     </div>    
+  <div class="list-mask" v-show="listShow" transition="fade" @click="hideList"></div>
   </div>  
+</div>
+
 </template>
 
 <script>
@@ -171,6 +175,15 @@ export default {
       this.selectFoods.forEach((food) => {
         food.count = 0
       })  
+    },
+    hideList() {
+      this.fold = true
+    },
+    pay() {
+      if (this.totalPrice < this.minPrice) {
+        return
+      }
+      window.alert(`支付${this.totalPrice}元`)
     }
   },
   transitions: {
@@ -376,5 +389,20 @@ export default {
               position: absolute 
               right: 0
               bottom: 6px
+  .list-mask
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: -10
+    backdrop-filter: blur(10px)
+    transition: all 0.4s linear
+    &.fade-transition
+      opacity: 1
+      background-color: rgba(7, 17, 27, 0.6)
+    &.fade-enter, &.fade-leave
+      opacity: 0
+      background-color: rgba(7, 17, 27, 0.6)
 </style>
 
