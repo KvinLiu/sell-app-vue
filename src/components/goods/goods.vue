@@ -15,10 +15,10 @@
   </div>
   <div class="foods-wrapper" v-el:foods-wrapper >
     <ul>
-      <li @click="selectFood(food, $event)" v-for="item in goods" class="food-list food-list-hook">
+      <li v-for="item in goods" class="food-list food-list-hook">
         <h1 class="title">{{item.name}}</h1>
         <ul>
-          <li v-for="food in item.foods" class="food-item border-1px">
+          <li @click="selectFood(food, $event)" v-for="food in item.foods" class="food-item border-1px">
             <div class="icon">
               <img width="57" heigth="57" :src="food.icon" :alt="food.name">
             </div>
@@ -41,7 +41,7 @@
     </ul>
   </div>
   <shopcart v-ref:shopcart :select-Foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
-  <food :food="selectedFood" v-ref:food></food>
+  <fooddetail :food="choosedFood" v-ref:food></fooddetail>
 </div>
 
 </template>
@@ -50,7 +50,7 @@
   import BScroll from 'better-scroll'
   import shopcart from 'components/shopcart/shopcart'
   import cartcontrol from 'components/cartcontrol/cartcontrol'
-  import food from 'components/food/food'
+  import fooddetail from 'components/food/food'
 
   const ERR_OK = 0
   export default {
@@ -64,7 +64,7 @@
         goods: [],
         listHeight: [],
         scrollY: 0,
-        selectedFood: {}
+        choosedFood: {}
       }
     },
     computed: {
@@ -124,7 +124,7 @@
         if (!event._constructed) {
           return 
         }
-        this.selectedFood = food
+        this.choosedFood = food
         this.$refs.food.show()
       },
       _initBScroll() {
@@ -160,7 +160,7 @@
     components: {
       shopcart,
       cartcontrol,
-      food
+      fooddetail
     },
     events: {
       'cart.add' (target) {
